@@ -48,4 +48,22 @@ const server = http.createServer(function(req,res){
 
 server.listen(config.port, config.base_url);
 console.log(`now listening to port ${config.port}`);
+*/ 
+
+
+/*server json 
+const server = http.createServer(function(req,res){
+    console.log(`request was made ${req.url}`);
+    res.writeHead(200, {'Content-Type': 'application/json'})
+    var object = {
+        name:'alvin',
+        job:'programmer',
+        age:21
+    };
+
+    res.end(JSON.stringify(object));
+});
+
+server.listen(config.port, config.base_url);
+console.log(`now listening to port ${config.port}`);
 */
