@@ -2,8 +2,10 @@ const http = require('http'); //server
 var config = require('./config/config'); //config
 var fs = require('fs'); //file or folder 
 
+var express = require('express');
+var app = express();
+var routes = require('./routes/routes');
 /* create a server 
-
 const server = http.createServer(function(req,res){
     console.log(`request was made ${req.url}`);
     res.writeHead(200, {'Content-Type': 'text/plain'})
@@ -16,7 +18,6 @@ console.log(`now listening to port ${config.port}`);
  
 
 /* read and write stream
-
 var myReadStream = 
     fs.createReadStream(`${__dirname}/readme.txt`, `utf8`);
 var myWriteStream = 
@@ -31,13 +32,11 @@ myReadStream.on('data', function(chunk){
 
 
 /* pipe
-
 myReadStream.pipe(myWriteStream);
  */
 
 
  /* server and pipe 
-
 const server = http.createServer(function(req,res){
     console.log(`request was made ${req.url}`);
     res.writeHead(200, {'Content-Type': 'text/html'})
@@ -67,3 +66,25 @@ const server = http.createServer(function(req,res){
 server.listen(config.port, config.base_url);
 console.log(`now listening to port ${config.port}`);
 */
+
+
+/*basic rounting
+const server = http.createServer(function(req,res){
+    console.log(`request was made ${req.url}`);
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    if(req.url==='/home'||req.url==='/'){
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    var myReadStream = 
+        fs.createReadStream(`${__dirname}/index.html`, `utf8`);
+    myReadStream.pipe(res);
+    }else{
+        res.end("test");
+    }
+});
+
+server.listen(config.port, config.base_url);
+console.log(`now listening to port ${config.port}`);
+*/
+
+app.use('/', routes);
+app.listen(config.port);
