@@ -36,15 +36,16 @@ myReadStream.pipe(myWriteStream);
  */
 
 
- /* server and pipe */
+ /* server and pipe 
 
 const server = http.createServer(function(req,res){
     console.log(`request was made ${req.url}`);
-    res.writeHead(200, {'Content-Type': 'text/plain'})
+    res.writeHead(200, {'Content-Type': 'text/html'})
     var myReadStream = 
-        fs.createReadStream(`${__dirname}/readme.txt`, `utf8`);
+        fs.createReadStream(`${__dirname}/index.html`, `utf8`);
     myReadStream.pipe(res);
 });
 
 server.listen(config.port, config.base_url);
 console.log(`now listening to port ${config.port}`);
+*/
