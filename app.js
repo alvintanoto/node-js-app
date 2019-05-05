@@ -86,5 +86,10 @@ server.listen(config.port, config.base_url);
 console.log(`now listening to port ${config.port}`);
 */
 
+app.set('view engine', 'ejs');
+
 app.use('/', routes);
+
+app.use('/public', express.static('public'));
+
 app.listen(config.port);

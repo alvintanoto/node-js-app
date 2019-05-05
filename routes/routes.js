@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /* express */
 router.get('/', function(req, res){
-    res.send('this is the homepage');
+    res.send('this is home page');
 });
 
 router.get('/contact', function(req, res){
@@ -11,7 +11,18 @@ router.get('/contact', function(req, res){
 });
 
 router.get('/profile/:id', function(req,res){
-    res.send(`you requested to see a profile id of ${req.params.id}`);
+    // res.send(`you requested to see a profile id of ${req.params.id}`);
+    var data = {
+        name: req.params.id,
+        age: 21,
+        hobbies: [
+            'main',
+            'makan',
+            'tidur'
+        ]
+    }
+    
+    res.render('profile', {person: data});
 });
 
 module.exports = router;
