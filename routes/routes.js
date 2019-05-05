@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+var urlencodedParser = bodyParser.urlencoded({extended:false});
+
 /* express */
 router.get('/', function(req, res){
     res.send('this is home page');
@@ -9,6 +11,10 @@ router.get('/', function(req, res){
 router.get('/contact', function(req, res){
     console.log(req.query);
     res.send('this is contact page');
+});
+
+router.post('/contact', urlencodedParser, function(req, res){
+    console.log(req.body);
 });
 
 router.get('/profile/:id', function(req,res){
