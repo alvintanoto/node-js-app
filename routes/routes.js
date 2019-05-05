@@ -7,6 +7,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/contact', function(req, res){
+    console.log(req.query);
     res.send('this is contact page');
 });
 
